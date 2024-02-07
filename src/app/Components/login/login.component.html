@@ -1,0 +1,75 @@
+<app-banner b ="LogIn"></app-banner>
+<!-- <div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <form action="#" #loginForm="ngForm" (ngSubmit)="login()">
+            <div class="form-group">
+              <input type="email" class="form-control" name ="Email" [(ngModel)]="user.email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name ="Pwd" [(ngModel)]="user.pwd" placeholder="pwd">
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary py-3 px-5" value="LogIn">
+            </div>
+          </form>  
+        </div>
+      </div>
+    </div>
+</div> -->
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <form name="form" (ngSubmit)="login()" #loginForm="ngForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              name="email"
+              [(ngModel)]="user.email"
+              #email="ngModel"
+              [ngClass]="{ 'is-invalid': loginForm.submitted && email.invalid }"
+              required
+              email
+            />
+            <div *ngIf="loginForm.submitted && email.invalid" class="invalid-feedback">
+              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.email">
+                Invalid Email Format
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              [(ngModel)]="user.pwd"
+              #password="ngModel"
+              [ngClass]="{'is-invalid': loginForm.submitted && password.invalid}"
+              required
+            />
+            <div
+              *ngIf="loginForm.submitted && password.invalid"
+              class="invalid-feedback"
+            >
+              <div *ngIf="password.errors.required">Password is required</div>
+            </div>
+          </div>
+          <span style="color: red;">{{errorMsg}}</span>
+          <div class="form-group">
+            <input
+              type="submit"
+              class="btn btn-primary py-3 px-5"
+              value="Login"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

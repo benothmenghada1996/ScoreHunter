@@ -1,0 +1,40 @@
+<app-banner b="Search Matches"></app-banner>
+<div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+            <form [formGroup]="searchMatchesForm">
+                <div class="form-group">
+                  <input type="number" formControlName="scoreOne" class="form-control" placeholder="Score One">
+                </div>
+                <div *ngIf="searchMatchesForm.controls['scoreOne'].invalid && (searchMatchesForm.controls['scoreOne'].touched ||
+                    searchMatchesForm.controls['scoreOne'].dirty)">
+                  <div *ngIf="searchMatchesForm.controls['scoreOne'].errors.required"> 
+                    Score One is required</div>
+                  </div>
+                <div class="form-group">
+                  <input type="number" formControlName="scoreTwo" class="form-control" placeholder="Score Two">
+                </div>
+                <div *ngIf="searchMatchesForm.controls['scoreTwo'].invalid && (searchMatchesForm.controls['scoreTwo'].touched ||
+                searchMatchesForm.controls['scoreTwo'].dirty)">
+                <div *ngIf="searchMatchesForm.controls['scoreTwo'].errors.required"> 
+                  Score Two is required</div>
+                </div>
+                <div class="form-group text-center">
+                  <input type="submit" (click)="search()" [disabled]="searchMatchesForm.invalid" class="btn btn-primary py-3 px-5" value="search">
+                </div>
+              </form>
+        </div>
+      </div>
+      
+      <div *ngIf="!isFound">
+        Matches Not Found
+      </div>
+      <div *ngFor="let m of matches" style ="margin-top: 120px;">
+        <app-result [x]="m"></app-result>
+      </div>
+
+    </div>
+</div>
+<!-- <app-result [x]="findedMatch"></app-result> -->
+

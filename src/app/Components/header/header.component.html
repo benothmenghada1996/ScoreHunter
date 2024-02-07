@@ -1,0 +1,56 @@
+<div class="site-mobile-menu site-navbar-target">
+  <div class="site-mobile-menu-header">
+    <div class="site-mobile-menu-close">
+      <span class="icon-close2 js-menu-toggle"></span>
+    </div>
+  </div>
+  <div class="site-mobile-menu-body"></div>
+</div>
+
+
+<header class="site-navbar py-4" role="banner">
+
+  <div class="container">
+    <div class="d-flex align-items-center" style="margin-left: 90px;">
+      <div class="site-logo">
+        <h1 style="font-size: larger; font-weight: bolder; margin-top:-20px; margin-left: -40px;">ScoreHunter</h1>
+      </div>
+      <div class="">
+        <nav class="site-navigation position-relative text-right" role="navigation">
+          <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+            <li class="active"><a routerLink="" class="nav-link">Home</a></li>
+            <li><a routerLink="matches" class="nav-link">Matches</a></li>
+            <li><a routerLink="players" class="nav-link">Players</a></li>
+            <li><a routerLink="teams" class="nav-link">Teams</a></li>
+            <li class="dropdown">
+              <!-- <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" 
+              *ngIf ="isLogged() && role == 'admin'">
+                Admin
+              </a> -->
+              <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" 
+             >
+                Admin
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" routerLink="add-Team">Add Team</a>
+                <a class="dropdown-item" routerLink="add-Match">Add Match</a>
+                <a class="dropdown-item" routerLink="add-Player">Add Player</a>
+                <a class="dropdown-item" routerLink="admin" >Dashboard</a>
+              </div>
+            </li>
+            <li><a routerLink="login" class="nav-link" *ngIf ="!isLogged()">Login</a></li>
+            <li><a routerLink="sign-up" class="nav-link" *ngIf ="!isLogged()">SignUp</a></li>
+            <li><a  class="nav-link" *ngIf ="isLogged()" (click)="logOut()">Logout</a></li>
+            <li><a routerLink="editProfile" class="nav-link" *ngIf ="isLogged()">Profile</a></li>
+            <!-- <li><a routerLink="search" class="nav-link">Search</a></li> -->
+            <li><a routerLink="searchMatches" class="nav-link" *ngIf ="!isLogged()">Search Matches</a></li>
+          </ul>
+        </nav>
+
+        <a routerLink="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span
+            class="icon-menu h3 text-white"></span></a>
+      </div>
+    </div>
+  </div>
+
+</header>

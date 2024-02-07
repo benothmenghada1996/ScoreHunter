@@ -1,0 +1,18 @@
+<app-banner b="Matches"></app-banner>
+<div class="site-section" style="margin-bottom: 5%; margin-top: -20%; margin-left: 30%;">
+  <div class="container ">
+    <div class="row">
+      <div class="col-lg-7">
+        <div>
+          <div class="form-group">
+            <input type="text" class="form-control bg-grey" name ="name" [(ngModel)]="term" placeholder="TeamOne/TeamTwo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngFor="let m of matches | customFilter : term | sort">
+  <app-result [x]="m" (newMatches)="updateMatches($event)"></app-result>
+</div>
+

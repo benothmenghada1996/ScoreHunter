@@ -1,0 +1,34 @@
+<app-banner b="Weather"></app-banner>
+<div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+            <form [formGroup]="weatherForm">
+                <div class="form-group">
+                  <input type="text" formControlName="city" class="form-control" placeholder="City">
+                </div>
+                <div *ngIf="weatherForm.controls['city'].invalid && (weatherForm.controls['city'].touched ||
+                    weatherForm.controls['city'].dirty)">
+                  <div *ngIf="weatherForm.controls['city'].errors.required"> 
+                    City Name is required</div>
+                  </div>
+                <div class="form-group text-center">
+                  <input type="submit" (click)="search()" [disabled]="weatherForm.invalid" class="btn btn-primary py-3 px-5" value="search">
+                </div>
+              </form>
+              <div *ngIf="result"> 
+                <div>
+                   Icon: <img  [src]="result.icone" alt="WeatherIcon">
+                </div>
+                <p>temp: {{result.temperature}}</p>
+                <p>pressure: {{result.pressure}}</p>
+                <p>humidity: {{result.humidity}}</p>
+                <p>windSpeed: {{result.windSpeed}}</p>
+              </div>
+        </div>
+      </div>
+      
+      
+</div>
+<!-- <app-result [x]="findedMatch"></app-result> -->
+

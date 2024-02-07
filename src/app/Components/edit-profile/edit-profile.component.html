@@ -1,0 +1,55 @@
+<app-banner b="Edit Profile"></app-banner>
+<div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <form [formGroup]="ediProfileForm">
+            <div class="form-group">
+              <input type="text" class="form-control" [(ngModel)]="user.firstName"  readonly formControlName="fName" placeholder="Fist Name" >
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control"  [(ngModel)]="user.lastName"  readonly formControlName="lName" placeholder="Last Name" >
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" formControlName="oldPwd" placeholder="Old password">
+            </div>
+            <div *ngIf ="ediProfileForm.controls['oldPwd'].invalid && (ediProfileForm.controls['oldPwd'].touched || ediProfileForm.controls['oldPwd'].dirty )">
+              <div *ngIf ="ediProfileForm.controls['oldPwd'].errors.required" class="text-danger">
+                  password is required
+              </div>
+              <div *ngIf ="ediProfileForm.controls['oldPwd'].errors.pattern" class="text-danger">
+                your password must contains between 6 and 12 caracters.
+              </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="newPwd" placeholder="New password">
+            </div>
+            <div *ngIf ="ediProfileForm.controls['newPwd'].invalid && (ediProfileForm.controls['newPwd'].touched || ediProfileForm.controls['newPwd'].dirty )">
+              <div *ngIf ="ediProfileForm.controls['newPwd'].errors.required" class="text-danger">
+                  password is required
+              </div>
+              <div *ngIf ="ediProfileForm.controls['newPwd'].errors.pattern" class="text-danger">
+                your password must contains between 6 and 12 caracters.
+              </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="confirmNewPwd" placeholder="confirm New pwd">
+            </div>
+            <div *ngIf ="ediProfileForm.controls['confirmNewPwd'].invalid && (ediProfileForm.controls['confirmNewPwd'].touched || ediProfileForm.controls['confirmNewPwd'].dirty )">
+              <div *ngIf ="ediProfileForm.controls['confirmNewPwd'].errors.required" class="text-danger">
+                  password is required
+              </div>
+              <div *ngIf ="ediProfileForm.controls['confirmNewPwd']" class="text-danger">
+                your new password is confirmed
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="submit" (click) ="ediProfile()" [disabled]="ediProfileForm.invalid" class="btn btn-primary py-3 px-5" value="ediProfile">
+            </div>
+          </form>  
+          <span style ="color: red;">{{errorMsg}}</span>
+        </div>
+      </div>
+    </div>
+</div>
+

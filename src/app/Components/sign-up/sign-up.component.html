@@ -1,0 +1,82 @@
+<app-banner b="SignUp"></app-banner>
+<div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <form [formGroup]="signupForm">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+            </div>
+            <div *ngIf ="signupForm.controls['firstName'].invalid && (signupForm.controls['firstName'].touched || signupForm.controls['firstName'].dirty)">
+                <div *ngIf ="signupForm.controls['firstName'].errors.required" class="text-danger">
+                   First Name is required
+                </div>
+                <div *ngIf ="signupForm.controls['firstName'].errors.minlength" class="text-danger">
+                  First Name must have at least 3 chars
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name">
+            </div>
+            <div *ngIf ="signupForm.controls['lastName'].invalid && (signupForm.controls['lastName'].touched || signupForm.controls['lastName'].dirty )">
+              <div *ngIf ="signupForm.controls['lastName'].errors.required" class="text-danger">
+                  Last Name is required
+              </div>
+              <div *ngIf ="signupForm.controls['lastName'].errors.minlength" class="text-danger">
+                  Last Name must have at least 5 chars 
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" formControlName="email" placeholder="Email">
+            </div>
+            <div *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].touched || signupForm.controls['email'].dirty)">
+                <div *ngIf="signupForm.controls['email'].errors.required" class="text-danger">
+                    Email is required
+                </div>
+                <div *ngIf="signupForm.controls['email'].errors.email" class="text-danger">
+                    Please enter a valid email.
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" formControlName="pwd" placeholder="pwd">
+            </div>
+            <div *ngIf ="signupForm.controls['pwd'].invalid && (signupForm.controls['pwd'].touched || signupForm.controls['pwd'].dirty )">
+              <div *ngIf ="signupForm.controls['pwd'].errors.required" class="text-danger">
+                  password is required
+              </div>
+              <div *ngIf ="signupForm.controls['pwd'].errors.pattern" class="text-danger">
+                your password must contains at least one special character, an uppercase letter and a number.
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control"
+             formControlName='confirmPwd'
+              placeholder="Confirm Password">
+              </div>
+              <div *ngIf="signupForm.controls['confirmPwd'].invalid && (signupForm.controls['confirmPwd'].dirty ||
+                signupForm.controls['confirmPwd'].touched)">
+                <div *ngIf="signupForm.controls['confirmPwd'].errors.mustMatch" class="text-danger">
+                  Confirm Pwd must match PWD
+                </div>
+             </div>
+          <div *ngIf ="signupForm.controls['confirmPwd'].invalid && (signupForm.controls['confirmPwd'].touched || signupForm.controls['confirmPwd'].dirty )">
+          </div>
+            <div class="form-group" style="visibility: hidden;">
+              <input  type="file" class="form-control" #filePicker (change)='onImageSelected($event)'/> 
+            </div>
+            <div class="text-center">
+              <button type="button" (click)='filePicker.click()' class="btn btn-success">
+                Select your image</button> <br>
+              <img [src]="imagePreview" width="200px" class="pt-3">
+            </div>
+            <!-- <div class="form-group" style="visibility: hidden;">
+              <input type="file" class="form-control">
+          </div> -->
+            <div class="form-group text-center">
+              <input type="submit" (click) ="SignUp()" [disabled]="signupForm.invalid" class="btn btn-primary py-3 px-5 mt-3" value="SignUp">
+            </div>
+          </form>  
+        </div>
+      </div>
+    </div>
+</div>
